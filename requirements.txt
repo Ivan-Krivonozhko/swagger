@@ -1,0 +1,12 @@
+pytest
+playwright
+requests
+qase-pytest
+python-dotenv
+allure-pytest
+httpx
+jsonschema
+pydantic
+pydantic-settings
+faker
+allure-python-commons
