@@ -1,11 +1,10 @@
 import allure
 import pytest
 
-from assertions.solutions import assert_status_code
+
 from assertions.user_assert import  assert_user_response
 from base.user_client import UserClient
 from models.user_request import UserRequest
-from settings import base_settings
 
 
 @pytest.mark.user
