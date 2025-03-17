@@ -86,3 +86,4 @@ venv.bak/
 failures
 src/tests/build
 /base/__init__.py
+/allure-results/
