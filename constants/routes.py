@@ -1,7 +1,6 @@
-from enum import Enum
+from enum import Enum, verify, UNIQUE
 
-class Routes(str, Enum):
+
+@verify(UNIQUE)
+class Routes(Enum):
     USER = "/user"
-
-    def __str__(self) -> str:
-        return self.value

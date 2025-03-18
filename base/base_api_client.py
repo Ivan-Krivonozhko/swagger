@@ -17,14 +17,14 @@ class BaseApiClient:
     def get(self, endpoint: str, expected_status_code=None, **kwargs) -> Response:
         response = requests.get(f"{self.base_url}{endpoint}", **kwargs)
         logging.info(f"Sending GET request to {self.base_url}{endpoint}")
-        return response if expected_status_code == response.status_code else _handle_error(response)
+        return response if expected_status_code == response.status_code else self._handle_error(response)
 
     @allure.step("POST request to {endpoint}")
     def post(self, endpoint: str, expected_status_code=None, **kwargs) -> Response:
         response = requests.post(f"{self.base_url}{endpoint}", **kwargs)
         logging.info(f"Sending POST request to {self.base_url}{endpoint}")
-        return response if expected_status_code == response.status_code  else _handle_error(expected_status_code, response)
+        return response if expected_status_code == response.status_code  else self._handle_error(expected_status_code, response)
 
-def _handle_error(expected_status_code:int,  response:Response) -> None:
-    logging.error(f"Expected status code: {expected_status_code}, but was {response.status_code}")
-    raise Exception(f"Expected status code: {expected_status_code}, but was {response.status_code}")
+    def _handle_error(self, expected_status_code:int,  response:Response) -> None:
+        logging.error(f"Expected status code: {expected_status_code}, but was {response.status_code}")
+        raise Exception(f"Expected status code: {expected_status_code}, but was {response.status_code}")

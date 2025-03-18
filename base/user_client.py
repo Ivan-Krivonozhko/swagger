@@ -1,4 +1,5 @@
 import logging
+from enum import StrEnum
 
 import allure
 
@@ -16,4 +17,7 @@ class UserClient(BaseApiClient):
     @allure.step("Create user")
     def create_user(self, expected_status_code:int, payload:UserRequest):
         logging.info(f"Create user: {payload}")
-        return self.post(Routes.USER, expected_status_code=expected_status_code, json=payload.model_dump(by_alias=True), headers={"Content-Type": "application/json"})
+        return self.post(Routes.USER.value,
+                         expected_status_code=expected_status_code,
+                         json=payload.model_dump(by_alias=True),
+                         headers={"Content-Type": "application/json"})

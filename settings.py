@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     )
 
     base_url: str
-    user: TestUser = TestUser()
+
 
     @property
     def api_url(self) -> str:
